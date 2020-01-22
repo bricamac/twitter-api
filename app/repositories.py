@@ -1,0 +1,2 @@
+class TweetRepository():
+    pass
