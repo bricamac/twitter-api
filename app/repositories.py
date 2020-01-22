@@ -12,6 +12,10 @@ class TweetRepository():
         tweet.set_id(self.compteur)
         self.tweets.append(tweet)
 
+    def clear(self):
+        self.tweets.clear()
+        self.compteur=0
+
     def get(self,id):
         for tweet in self.tweets:
             if tweet.id == id :
