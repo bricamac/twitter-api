@@ -1,14 +1,11 @@
 import datetime
+from app import db
 
-class Tweet():
-    def __init__(self,message):
+class Tweet(db.Model):
+    __tablename__ = "tweets"
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(280))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-        self.text=message
-        self.created_at= datetime.datetime.now()
-        self.id = None
-
-    def set_id(self,id):
-        self.id=id
-
-    def get_id(self):
-        return self.id
+    def __repr__(self):
+        return f"<Tweet #{self.id}>"

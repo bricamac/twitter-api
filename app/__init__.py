@@ -2,16 +2,19 @@
 from flask import Flask
 from flask_restplus import Api
 
-#Init base...
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
 from app.models import Tweet
-from app.db import tweet_repository
-first_tweet = Tweet("1er tweet")
-tweet_repository.add(first_tweet)
-first_tweet = Tweet("2eme tweet")
-tweet_repository.add(first_tweet)
+
+
+
 
 def create_app():
     app = Flask(__name__)
+
+    from config import Config
+    app.config.from_object(Config)
+    db.init_app(app)
 
     @app.route('/hello')
     def hello():
